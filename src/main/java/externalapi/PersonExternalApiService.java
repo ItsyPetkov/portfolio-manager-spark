@@ -12,14 +12,16 @@ public class PersonExternalApiService {
 
     private OkHttpClient client;
     private Gson gson;
+    private String baseUrl;
 
-    public PersonExternalApiService() {
+    public PersonExternalApiService(String baseUrl) {
         this.client = new OkHttpClient();
         this.gson = new Gson();
+        this.baseUrl = baseUrl;
     }
 
     public Person getPerson() throws IOException {
-        String url = "https://portfolio-manager-api.herokuapp.com/person";
+        String url = baseUrl + "/person";
         Request request = new Request.Builder()
                 .url(url)
                 .build();

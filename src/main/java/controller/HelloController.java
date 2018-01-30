@@ -17,9 +17,9 @@ public class HelloController {
     private Gson gson;
     private final PersonExternalApiService personExternalApiService;
 
-    public HelloController() {
+    public HelloController(String baseUrl) {
         gson = new Gson();
-        personExternalApiService = new PersonExternalApiService();
+        personExternalApiService = new PersonExternalApiService(baseUrl);
         setupRoutes();
     }
 

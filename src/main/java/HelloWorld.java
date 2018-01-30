@@ -3,6 +3,7 @@ import controller.HelloController;
 public class HelloWorld {
 
     public static void main(String[] args) {
-        new HelloController();
+        String baseUrl = "https://portfolio-manager-api.herokuapp.com";
+        new HelloController(baseUrl);
     }
 }
