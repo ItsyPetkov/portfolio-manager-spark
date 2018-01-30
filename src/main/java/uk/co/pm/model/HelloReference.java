@@ -1,4 +1,4 @@
-package model;
+package uk.co.pm.model;
 
 public class HelloReference {
     public HelloReference(String message) {
@@ -17,7 +17,7 @@ public class HelloReference {
 
     @Override
     public String toString() {
-        return "model.HelloReference{" +
+        return "uk.co.pm.model.HelloReference{" +
                 "message='" + message + '\'' +
                 '}';
     }

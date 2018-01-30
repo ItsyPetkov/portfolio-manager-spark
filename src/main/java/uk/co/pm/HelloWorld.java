@@ -1,4 +1,6 @@
-import controller.HelloController;
+package uk.co.pm;
+
+import uk.co.pm.controller.HelloController;
 
 public class HelloWorld {
 

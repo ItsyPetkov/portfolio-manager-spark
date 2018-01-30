@@ -1,4 +1,4 @@
-package model;
+package uk.co.pm.model;
 
 public class Person {
 
@@ -31,7 +31,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "model.Person{" +
+        return "uk.co.pm.model.Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';

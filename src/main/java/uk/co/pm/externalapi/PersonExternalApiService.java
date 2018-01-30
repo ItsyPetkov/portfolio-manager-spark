@@ -1,7 +1,7 @@
-package externalapi;
+package uk.co.pm.externalapi;
 
 import com.google.gson.Gson;
-import model.Person;
+import uk.co.pm.model.Person;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

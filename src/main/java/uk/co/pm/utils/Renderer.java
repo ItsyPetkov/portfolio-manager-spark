@@ -1,4 +1,4 @@
-package utils;
+package uk.co.pm.utils;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;

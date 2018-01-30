@@ -1,7 +1,7 @@
-package service;
+package uk.co.pm.service;
 
-import model.HelloReference;
-import model.Person;
+import uk.co.pm.model.HelloReference;
+import uk.co.pm.model.Person;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
