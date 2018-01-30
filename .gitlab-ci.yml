@@ -5,14 +5,9 @@ cache:
     - .m2/repository
 
 stages:
-  - test
   - build
   - deploy
 
-
-maven_test:
-  stage: test
-  script: mvn test
 
 maven_package:
   stage: build
