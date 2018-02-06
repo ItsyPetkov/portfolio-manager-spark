@@ -8,15 +8,16 @@ public class PortfolioManagerApplication {
 
     public static void main(String[] args) {
         port(getAssignedPort());
-        String baseUrl = "https://portfolio-manager-api.herokuapp.com";
-        new HelloController(baseUrl);
+        String remoteApiBaseUrl = "https://portfolio-manager-api.herokuapp.com";
+        new HelloController(remoteApiBaseUrl);
     }
 
+    //This will be used when we push to a cloud server
     private static int getAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+        return 4567; // this port is what is used for running on localhost
     }
 }

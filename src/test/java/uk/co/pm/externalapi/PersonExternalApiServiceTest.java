@@ -8,6 +8,8 @@ import uk.co.pm.FileTestUtils;
 import uk.co.pm.SocketTestUtils;
 import uk.co.pm.model.Person;
 
+import java.util.List;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
@@ -31,15 +33,18 @@ public class PersonExternalApiServiceTest {
 
     @Test
     public void getPerson() throws Exception{
-        String body = FileTestUtils.readClasspathFile("/json/person.json");
+        String body = FileTestUtils.readClasspathFile("/json/people.json");
 
-        stubFor(get(urlEqualTo("/person"))
+        stubFor(get(urlEqualTo("/people"))
                         .willReturn(okJson(body)));
 
-        Person person = personExternalApiService.getPerson();
+        List<Person> people = personExternalApiService.getPeople();
 
-        assertThat(person.getAge()).isEqualTo(35);
-        assertThat(person.getName()).isEqualTo("Susan");
+        assertThat(people).hasSize(2);
+        assertThat(people.get(0).getAge()).isEqualTo(35);
+        assertThat(people.get(0).getName()).isEqualTo("Susan");
+        assertThat(people.get(1).getAge()).isEqualTo(42);
+        assertThat(people.get(1).getName()).isEqualTo("Enrique");
     }
 
 }

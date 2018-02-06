@@ -17,7 +17,7 @@ public class HelloReference {
 
     @Override
     public String toString() {
-        return "uk.co.pm.model.HelloReference{" +
+        return "HelloReference{" +
                 "message='" + message + '\'' +
                 '}';
     }
