@@ -42,8 +42,11 @@ public class PersonExternalApiService {
 
         //Extract the response body as a string
         String responseString = response.body().string();
+        
         //use Gson to turn your json string into a list of Person objects
         List<Person> people = gson.fromJson(responseString, personListTypeToken.getType());
+       
         return people;
+        
     }
 }

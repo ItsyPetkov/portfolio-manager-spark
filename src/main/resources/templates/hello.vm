@@ -1,10 +1,10 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
-<body style="color: red">
+<body style="color: blue">
 <ul>
     #foreach($person in $people)
-    <li>Hello $person.Name!</li>
+    <li>Hello there $person.Age!</li>
     #end
 </ul>
 </body>
