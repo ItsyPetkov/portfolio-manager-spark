@@ -1,22 +1,18 @@
 package uk.co.pm.model;
 
-import com.google.gson.annotations.SerializedName;
 
 public class Equity {
 
-	private String EPIC,Sector, Currency;
-	 @SerializedName("Asset Type") private String AssetType;
-	@SerializedName("Company Name") String  CompanyName;
+	private String EPIC, CompanyName, AssesType, Sector, Currency;
 	
-	public Equity(String epic, String companyName, String assettype, String sector, String currency){
-		
+	public Equity(String epic, String companyName, String assestype, String sector, String currency){
 		this.EPIC = epic;
 		this.CompanyName = companyName;
-	    this.AssetType = assettype;
+		this.AssesType = assestype;
 		this.Sector = sector;
 		this.Currency = currency;
 	}
-	
+
 	public String getEPIC() {
 		return EPIC;
 	}
@@ -26,7 +22,6 @@ public class Equity {
 	}
 
 	public String getCompanyName() {
-		
 		return CompanyName;
 	}
 
@@ -34,12 +29,12 @@ public class Equity {
 		this.CompanyName = companyName;
 	}
 
-	public String getAssetType() {		
-		return AssetType;
+	public String getAssesType() {
+		return AssesType;
 	}
 
-	public void setAssetType(String assetType) {
-		this.AssetType = assetType;
+	public void setAssesType(String assesType) {
+		this.AssesType = assesType;
 	}
 
 	public String getSector() {
@@ -57,13 +52,4 @@ public class Equity {
 	public void setCurrency(String currency) {
 		this.Currency = currency;
 	}
-	 @Override
-	    public String toString() {
-	        return "uk.co.pm.model.Equity{" +
-	                "Company Name='" + CompanyName + '\'' +
-	                ", EPIC=" + EPIC + '\'' +
-	                ", Currency=" + Currency + '\'' +
-	                ", Sector=" + Sector +
-	                '}';
-	    }
 }

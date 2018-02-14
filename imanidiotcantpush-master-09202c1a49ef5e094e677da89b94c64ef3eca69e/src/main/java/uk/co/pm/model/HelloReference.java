@@ -1,6 +1,8 @@
 package uk.co.pm.model;
 
 public class HelloReference {
+	
+	
     public HelloReference(String message) {
         this.message = message;
     }

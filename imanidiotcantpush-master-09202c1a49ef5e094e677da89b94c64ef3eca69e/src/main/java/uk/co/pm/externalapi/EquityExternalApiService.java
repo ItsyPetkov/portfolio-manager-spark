@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import okhttp3.OkHttpClient;
@@ -28,24 +29,27 @@ public class EquityExternalApiService {
     public EquityExternalApiService(String baseUrl) {
         this.client = new OkHttpClient();
         this.gson = new Gson();
+        
         this.baseUrl = baseUrl;
     }
 
-    public List<Equity> getEquities() throws IOException {
-        String url = baseUrl + "/equity";
+    public  List<Equity> getEquities() throws IOException {
+        String url = baseUrl + "/equities";
 
         //Create a okHttp "request"
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        Request request = new Request.Builder().url(url).build();
 
         //Use the okHttp client to make a call, using our request object, returning a response
         Response response = client.newCall(request).execute();
 
         //Extract the response body as a string
         String responseString = response.body().string();
+        System.out.println(responseString);
         //use Gson to turn your json string into a list of Person objects
+        System.out.println(gson.fieldNamingStrategy());
         List<Equity> equities = gson.fromJson(responseString, equitiesListTypeToken.getType());
+       
+
         return equities;
     }
 	
