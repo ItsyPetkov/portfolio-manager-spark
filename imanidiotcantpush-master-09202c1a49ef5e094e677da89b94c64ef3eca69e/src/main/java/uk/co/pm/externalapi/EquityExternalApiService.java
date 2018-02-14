@@ -33,7 +33,7 @@ public class EquityExternalApiService {
         this.baseUrl = baseUrl;
     }
 
-    public List<Equity> getEquities() throws IOException {
+    public  List<Equity> getEquities() throws IOException {
         String url = baseUrl + "/equities";
 
         //Create a okHttp "request"

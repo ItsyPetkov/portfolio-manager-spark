@@ -28,10 +28,10 @@ public class EquityController {
     public EquityController(String remoteApiBaseUrl) {
         gson = new Gson();
         EquityExternalApiService = new EquityExternalApiService(remoteApiBaseUrl);
-        setupRoutes();
+       setupRoutes();
     }
 
-    private void setupRoutes() {
+   private void setupRoutes() {
         //This is how you set up a REST GET method, using Spark (http://sparkjava.com)
         get("/equities", (Request request, Response response) -> 
         
@@ -63,5 +63,6 @@ public class EquityController {
                 return gson.toJson(Eqm);
             }
         });
+
     }
 }
