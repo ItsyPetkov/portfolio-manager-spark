@@ -44,13 +44,38 @@ public class EquityExternalApiService {
 
         //Extract the response body as a string
         String responseString = response.body().string();
-        System.out.println(responseString);
-        //use Gson to turn your json string into a list of Person objects
-        System.out.println(gson.fieldNamingStrategy());
+
+        //use Gson to turn your json string into a list of Equity objects
+
         List<Equity> equities = gson.fromJson(responseString, equitiesListTypeToken.getType());
-       
+
+
 
         return equities;
     }
-	
+	public List<Equity> getEquities(String param) throws IOException{
+        String url = baseUrl + "/equities";
+
+        //Create a okHttp "request"
+        Request request = new Request.Builder().url(url).build();
+
+        //Use the okHttp client to make a call, using our request object, returning a response
+        Response response = client.newCall(request).execute();
+
+        //Extract the response body as a string
+        String responseString = response.body().string();
+
+
+        //use Gson to turn your json string into a list of Equity objects
+
+        List<Equity> equities = gson.fromJson(responseString, equitiesListTypeToken.getType());
+
+
+
+        return equities;
+
+
+
+    }
+
 }

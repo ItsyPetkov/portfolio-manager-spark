@@ -54,11 +54,11 @@ public class Controller {
             	
                 //Change the Person objects we got from the external API into the format we want to return to our users
                 List<HelloReference> helloReferences = new ArrayList<>();
-                
+
                 for (Person person : people) {
                     helloReferences.add(HelloMessageService.getHelloMessage(person));
                 }
-                System.out.println(helloReferences);
+
                 //Use Gson (Google's json parser) to turn the Java object into json
                 return gson.toJson(helloReferences);
             }
@@ -85,7 +85,7 @@ public class Controller {
                 List<EquityModel> Eqm = new ArrayList<>();
 
                 for (Equity eq : Equities) {
-                    Eqm.add(EqService.getStuff(eq));
+                    Eqm.add(EqService.getEq(eq));
                 }
 
                 //Use Gson (Google's json parser) to turn the Java object into json
@@ -115,7 +115,7 @@ public class Controller {
                 List<EquityModel> Eqm = new ArrayList<>();
 
                 for (Equity eq : Equities) {
-                    Eqm.add(EqService.getStuff(eq));
+                    Eqm.add(EqService.getEq(eq));
                 }
 
                 //Use Gson (Google's json parser) to turn the Java object into json
@@ -145,7 +145,7 @@ public class Controller {
                 List<EquityModel> Eqm = new ArrayList<>();
 
                 for (Equity eq : Equities) {
-                    Eqm.add(EqService.getStuff(eq));
+                    Eqm.add(EqService.getEq(eq));
                 }
 
                 //Use Gson (Google's json parser) to turn the Java object into json
@@ -175,11 +175,84 @@ public class Controller {
                 List<EquityModel> Eqm = new ArrayList<>();
 
                 for (Equity eq : Equities) {
-                    Eqm.add(EqService.getStuff(eq));
+                    Eqm.add(EqService.getEq(eq));
                 }
 
                 //Use Gson (Google's json parser) to turn the Java object into json
 
+
+                return gson.toJson(Eqm);
+            }
+        });
+        get("/equities/assettype",(Request request, Response response) ->
+
+        {
+            //call the external api
+            List<Equity> Equities = equityExternalApiService.getEquities();
+
+            //Here, we check whether the request is for html, or whether we should return JSON
+            if (shouldReturnHtml(request)) {
+                //Create a map to represent to "model"
+                Map<String, Object> model = new HashMap<>();
+                model.put("equities", Equities);
+
+                //The path to the tells the program to go look in the resources/templates folder for a file called hello.vm
+                //The template is written in a templating language called Velocity (http://velocity.apache.org/)
+                return render(model, "templates/assettype.vm");
+            } else {
+
+                //Change the Person objects we got from the external API into the format we want to return to our users
+                List<EquityModel> Eqm = new ArrayList<>();
+
+                for (Equity eq : Equities) {
+                    Eqm.add(EqService.getEq(eq));
+                }
+
+                //Use Gson (Google's json parser) to turn the Java object into json
+
+                System.out.println((request.params()));
+                return gson.toJson(Eqm);
+            }
+        });
+        get("/equities/:EPIC",(Request request, Response response) ->
+
+        {
+
+
+            //call the external api
+            List<Equity> Equities = equityExternalApiService.getEquities();
+
+            //Here, we check whether the request is for html, or whether we should return JSON
+            if (shouldReturnHtml(request)) {
+                //Create a map to represent to "model"
+                Map<String, Object> model = new HashMap<>();
+
+
+                for (Equity eq : Equities) {
+
+
+                    if(request.params(":epic").equals(eq.getEPIC())) {
+                        System.out.print(request.params(":epic").equals(eq.getEPIC()));
+                        List<Equity> temp = new ArrayList<Equity>();
+                        temp.add(eq);
+                      model.put("equities", temp);
+                      System.out.println(temp);
+
+                      break;
+                    }
+
+                }
+                //The path to the tells the program to go look in the resources/templates folder for a file called hello.vm
+                //The template is written in a templating language called Velocity (http://velocity.apache.org/)
+                return render(model, "templates/individual.vm");
+            } else {
+
+                //Change the Equity objects we got from the external API into the format we want to return to our users
+                List<EquityModel> Eqm = new ArrayList<>();
+                for (Equity eq : Equities) {
+                    Eqm.add(EqService.getEq(eq));
+                }
+                //Use Gson (Google's json parser) to turn the Java object into json
 
                 return gson.toJson(Eqm);
             }

@@ -1,0 +1,24 @@
+## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
+
+<html>
+<body style="color: black">
+<ul>
+    #foreach($equity in $equities)
+
+        #set($value = $equity.getSector() )
+        #set($value2 = $equity.getCompanyName())
+
+
+
+        <table style="width:100%" border="1">
+            <tr>$value2</tr>
+            <tr><th align="left"> Asset Type is: $equity.getAssetType()</th></tr>
+            <tr><th align="left"> Sector is: $value </th></tr>
+            <tr><th align="left"> Currency is: $equity.getCurrency()</th></tr>
+            </tr>
+        </table>
+
+    #end
+</ul>
+</body>
+</html>

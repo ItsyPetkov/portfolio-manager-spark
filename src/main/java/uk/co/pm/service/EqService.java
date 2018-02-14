@@ -6,7 +6,7 @@ import uk.co.pm.model.EquityModel;
 public class EqService {
 
 	
-	public static EquityModel getStuff(final Equity eq){
+	public static EquityModel getEq(final Equity eq){
 		if(eq == null){
 			throw new IllegalArgumentException("Equity can't be null");
 		}

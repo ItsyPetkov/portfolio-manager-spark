@@ -16,7 +16,7 @@ public class Equity {
 		this.Sector = sector;
 		this.Currency = currency;
 	}
-	
+
 	public String getEPIC() {
 		return EPIC;
 	}
@@ -25,10 +25,7 @@ public class Equity {
 		this.EPIC = ePIC;
 	}
 
-	public String getCompanyName() {
-		
-		return CompanyName;
-	}
+	public String getCompanyName() { return CompanyName; }
 
 	public void setCompanyName(String companyName) {
 		this.CompanyName = companyName;
@@ -53,6 +50,8 @@ public class Equity {
 	public String getCurrency() {
 		return Currency;
 	}
+
+
 
 	public void setCurrency(String currency) {
 		this.Currency = currency;
