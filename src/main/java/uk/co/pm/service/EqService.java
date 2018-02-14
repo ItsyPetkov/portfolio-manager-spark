@@ -14,6 +14,10 @@ public class EqService {
 			throw new IllegalArgumentException("Equity Must have a NAME" );
 		}
 		
-		return new EquityModel(eq.getCompanyName());
+		return new EquityModel("Name is: " + eq.getCompanyName() + 
+				" Sector is: " + eq.getSector()+ 
+				" EPIC is:  " + eq.getEPIC() + 
+				" Asset Type is: " + eq.getAssetType() + 
+				" Currency is: " + eq.getCurrency());
 	}
 }
