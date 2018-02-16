@@ -1,0 +1,30 @@
+[
+	{
+		"CompanyName": "3I GROUP PLC",
+		"EPIC": "III",
+		"AssetType": "Equity",
+		"Sector": "Financials",
+		"Currency": "GBP"
+	},
+	{
+		"CompanyName": "ABERDEEN ASSET MANAGEMENT PLC",
+		"EPIC": "ADN",
+		"AssetType": "Equity",
+		"Sector": "Financials",
+		"Currency": "GBP"
+	},
+	{
+		"CompnayName": "ADMIRAL GROUP PLC",
+		"EPIC": "ADM",
+		"AssetType": "Equity",
+		"Sector": "Financials"
+		"Currency": "GBP"
+	},
+	{
+		"CompanyName": "ANGLO AMERICAN PLC",
+		"EPIC": "AAL",
+		"AssetType": "Equity",
+		"Sector": "Materials",
+		"Currency": "GBP"
+	}
+]
