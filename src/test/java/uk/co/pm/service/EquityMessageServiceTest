@@ -1,6 +1,5 @@
 package uk.co.pm.service;
 
-import uk.co.pm.model.HelloReference;
 import uk.co.pm.model.Equity;
 import uk.co.pm.model.EquityModel;
 
