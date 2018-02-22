@@ -1,6 +1,7 @@
 package uk.co.pm;
 
 import uk.co.pm.controller.Controller;
+import uk.co.pm.utils.CSVUtilFile;
 
 import static spark.Spark.port;
 
@@ -10,6 +11,7 @@ public class PortfolioManagerApplication {
         port(getAssignedPort());
         String remoteApiBaseUrl = "https://portfolio-manager-api.herokuapp.com";
         new Controller(remoteApiBaseUrl);
+        new CSVUtilFile(remoteApiBaseUrl);
     }
 
     //This will be used when we push to a cloud server
