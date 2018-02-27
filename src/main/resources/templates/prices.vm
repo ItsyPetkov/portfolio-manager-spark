@@ -10,9 +10,10 @@
     #foreach($price in $prices)
         #if($foreach.index < $equities.size())
             #set($value2 = $equities.get($foreach.index))
-            #else
+        #else
             #stop
         #end
+        $foreach.index
         #set($value = $price.getDate())
 
         <table style="width:100%" border="1">

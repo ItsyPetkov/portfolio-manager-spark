@@ -80,7 +80,8 @@ public class PriceController {
 
                 Map<String, Object> model = new HashMap<>();
                 for (Equity e :equities) {
-                    if(request.params(":sector").equals(e.getSector())) {
+
+                    if(request.params(":sector").trim().replaceAll("_", " ").equals(e.getSector())) {
 
                         temp.add(e);
                     }
