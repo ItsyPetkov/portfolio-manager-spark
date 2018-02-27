@@ -1,6 +1,7 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
+<button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
     #foreach($equity in $equities)
@@ -19,6 +20,41 @@
         </table>
 
     #end
+    <script>
+        function downloadCSV(csv, filename) {
+            var csvFile;
+            var download;
+            csvFile = new Blob([csv], {type: "text/csv"});
+            download = document.createElement("a");
+
+            download.download = filename;
+
+            download.href = window.URL.createObjectURL(csvFile);
+
+            download.style.display = "none";
+
+            document.body.appendChild(download);
+
+
+            download.click();
+        }
+
+        function exportTableToCSV(filename) {
+            var csv = [];
+            var rows = document.querySelectorAll("table tr");
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+                for (var j = 0; j < cols.length; j++)
+                    row.push(cols[j].innerText);
+                csv.push(row.join(","));
+            }
+            downloadCSV(csv.join("\n"), filename);
+        }
+
+    </script>
+
+
+
 </ul>
 </body>
 </html>

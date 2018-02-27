@@ -4,15 +4,33 @@
 <button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
-    #foreach($equity in $equities)
+
+
+
+    #foreach($price in $prices)
+        #if($foreach.index < $equities.size())
+            #set($value2 = $equities.get($foreach.index))
+            #else
+            #stop
+        #end
+        #set($value = $price.getDate())
 
         <table style="width:100%" border="1">
-            <tr>$equity.getCompanyName()'s EPIC is:</tr>
-
-            <tr><th align="left"> $equity.EPIC</th></tr>
-
+            <tr>$price.getEPIC()</tr>
+            <tr>
+                <th align="left"> Currency is: $price.getCurrency()</th>
+            </tr>
+            <tr>
+                <th align="left"> Date is: $value </th>
+            </tr>
+            <tr>
+                <th align="left"> Mid Price is: $price.getMid() </th>
+            </tr>
+            <tr>
+                <th align="left"> Name is: $value2.getCompanyName()</th>
+            </tr>
+            </tr>
         </table>
-
     #end
     <script>
         function downloadCSV(csv, filename) {
@@ -53,5 +71,6 @@
 
 
 </ul>
+
 </body>
 </html>

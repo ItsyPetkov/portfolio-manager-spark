@@ -1,9 +1,8 @@
 package uk.co.pm.service;
 
+import org.testng.annotations.Test;
 import uk.co.pm.model.Equity;
 import uk.co.pm.model.EquityModel;
-
-import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

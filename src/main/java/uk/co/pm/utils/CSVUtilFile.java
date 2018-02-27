@@ -25,7 +25,7 @@ public class CSVUtilFile {
 		
 		
 
-        String csvFile = "E:/Games/New folder/cs217/Equities.csv"; //please change this to correct directory otherwise this will only work for me!
+        String csvFile = "Equities.csv"; //please change this to correct directory otherwise this will only work for me!
         FileWriter writer = new FileWriter(csvFile);
 
         EquityCSVUtil.writeLine(writer, Arrays.asList("EPIC", "CompanyName", "AssetType", "Sector", "Currency"));

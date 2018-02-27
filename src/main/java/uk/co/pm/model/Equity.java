@@ -51,11 +51,10 @@ public class Equity {
 		return Currency;
 	}
 
-
-
 	public void setCurrency(String currency) {
 		this.Currency = currency;
 	}
+
 	 @Override
 	    public String toString() {
 	        return "uk.co.pm.model.Equity{" +
