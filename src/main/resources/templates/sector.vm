@@ -1,6 +1,7 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
+<button onclick="CSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
     #foreach($equity in $equities)
@@ -28,11 +29,10 @@
 
             document.body.appendChild(downloadLink);
 
-
             downloadLink.click();
         }
 
-        function exportTableToCSV(filename) {
+        function CSV(filename) {
             var csv = [];
             var rows = document.querySelectorAll("table tr");
 

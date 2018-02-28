@@ -1,7 +1,7 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
-<button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
+<button onclick="CSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
 
@@ -13,16 +13,10 @@
         #else
             #stop
         #end
-        $foreach.index
-        #set($value = $price.getDate())
 
         <table style="width:100%" border="1">
-            <tr>$price.getEPIC()</tr>
             <tr>
-                <th align="left"> Currency is: $price.getCurrency()</th>
-            </tr>
-            <tr>
-                <th align="left"> Date is: $value </th>
+                <th align="left"> EPIC is: $price.getEPIC()</th>
             </tr>
             <tr>
                 <th align="left"> Mid Price is: $price.getMid() </th>
@@ -52,7 +46,7 @@
             downloadLink.click();
         }
 
-        function exportTableToCSV(filename) {
+        function CSV(filename) {
             var csv = [];
             var rows = document.querySelectorAll("table tr");
 
