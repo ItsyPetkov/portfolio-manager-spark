@@ -1,32 +1,38 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
-<button onclick="CSV('Equities.csv')">Export to CSV!</button>
+<button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
 
 
-
     #foreach($price in $prices)
+
         #if($foreach.index < $equities.size())
             #set($value2 = $equities.get($foreach.index))
         #else
             #stop
         #end
 
-        <table style="width:100%" border="1">
+        <table style="width:100%" border="3">
+
             <tr>
                 <th align="left"> EPIC is: $price.getEPIC()</th>
             </tr>
+
             <tr>
                 <th align="left"> Mid Price is: $price.getMid() </th>
             </tr>
+
             <tr>
                 <th align="left"> Name is: $value2.getCompanyName()</th>
             </tr>
+
             </tr>
         </table>
+
     #end
+
     <script>
         function downloadCSV(csv, filename) {
             var csvFile;
@@ -46,7 +52,7 @@
             downloadLink.click();
         }
 
-        function CSV(filename) {
+        function exportTableToCSV(filename) {
             var csv = [];
             var rows = document.querySelectorAll("table tr");
 
@@ -60,9 +66,7 @@
             }
             downloadCSV(csv.join("\n"), filename);
         }
-
     </script>
-
 
 
 </ul>

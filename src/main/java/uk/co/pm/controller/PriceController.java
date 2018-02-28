@@ -26,12 +26,10 @@ public class PriceController {
 
 
     private Gson gson;
-    private final PersonExternalApiService personExternalApiService;
     private final EquityExternalApiService equityExternalApiService;
     private final PriceExternalApiService priceExternalApiService;
     public PriceController(String remoteApiBaseUrl) {
         gson = new Gson();
-        personExternalApiService = new PersonExternalApiService(remoteApiBaseUrl);
         equityExternalApiService = new EquityExternalApiService(remoteApiBaseUrl);
         priceExternalApiService = new PriceExternalApiService(remoteApiBaseUrl);
         setupRoutes();
@@ -39,7 +37,7 @@ public class PriceController {
 
     private void setupRoutes(){
         //This is how you set up a REST GET method, using Spark (http://sparkjava.com)
-        get("/prices", (Request request, Response response) ->
+        get("/equities/prices", (Request request, Response response) ->
 
         {
             //call the external api
@@ -88,7 +86,7 @@ public class PriceController {
                 }
                 model.put("prices", prices);
                 model.put("equities", temp);
-                return render(model, "templates/prices.vm");
+                return render(model, "templates/prices2.vm");
             } else {
                 //Change the Person objects we got from the external API into the format we want to return to our users
                 List<PriceReference> priceReferences = new ArrayList<>();
@@ -130,6 +128,32 @@ public class PriceController {
                     priceReferences.add(PriceMessageService.getPriceMessage(p));
                 }
 
+                //Use Gson (Google's json parser) to turn the Java object into json
+                return gson.toJson(priceReferences);
+            }
+        });
+
+        get("/equities/prices/:Q", (Request request, Response response) ->
+
+        {
+            String quarter = request.params(":Q");
+
+            //call the external api
+            List<Price> prices = priceExternalApiService.getQPrices(quarter);
+
+            //Here, we check whether the request is for html, or whether we should return JSON
+            if (shouldReturnHtml(request)) {
+
+                Map<String, Object> model = new HashMap<>();
+
+                model.put("prices", prices);
+                return render(model, "templates/prices2.vm");
+            } else {
+                //Change the Person objects we got from the external API into the format we want to return to our users
+                List<PriceReference> priceReferences = new ArrayList<>();
+                for (Price p : prices) {
+                    priceReferences.add(PriceMessageService.getPriceMessage(p));
+                }
                 //Use Gson (Google's json parser) to turn the Java object into json
                 return gson.toJson(priceReferences);
             }
