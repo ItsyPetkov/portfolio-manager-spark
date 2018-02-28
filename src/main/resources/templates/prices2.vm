@@ -1,0 +1,71 @@
+## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
+
+<html>
+<button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
+<body style="color: black">
+<ul>
+
+
+
+    #foreach($price in $prices)
+        #if($foreach.index < $equities.size())
+            #set($value2 = $equities.get($foreach.index))
+        #else
+            #stop
+        #end
+
+        #set($value = $price.getDate())
+
+        <table style="width:100%" border="1">
+
+            <tr>
+                <th align="left"> EPIC is: $price.getEPIC()</th>
+            </tr>
+            <tr>
+                <th align="left"> Mid Price is: $value2.getMid()</th>
+            </tr>
+            </tr>
+        </table>
+    #end
+    <script>
+        function downloadCSV(csv, filename) {
+            var csvFile;
+            var downloadLink;
+            csvFile = new Blob([csv], {type: "text/csv"});
+            downloadLink = document.createElement("a");
+
+            downloadLink.download = filename;
+
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+
+            downloadLink.style.display = "none";
+
+            document.body.appendChild(downloadLink);
+
+
+            downloadLink.click();
+        }
+
+        function exportTableToCSV(filename) {
+            var csv = [];
+            var rows = document.querySelectorAll("table tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+
+                for (var j = 0; j < cols.length; j++)
+                    row.push(cols[j].innerText);
+
+                csv.push(row.join(","));
+            }
+            downloadCSV(csv.join("\n"), filename);
+        }
+
+    </script>
+
+
+
+</ul>
+
+</body>
+</html>

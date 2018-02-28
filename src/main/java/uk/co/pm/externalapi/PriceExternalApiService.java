@@ -25,13 +25,36 @@ public class PriceExternalApiService {
     public PriceExternalApiService(String baseUrl) {
         this.client = new OkHttpClient();
         this.gson = new Gson();
-
         this.baseUrl = baseUrl;
     }
 
     public List<Price> getPrices() throws IOException {
         String url = baseUrl + "/prices";
 
+        //Create a okHttp "request"
+        Request request = new Request.Builder().url(url).build();
+
+        //Use the okHttp client to make a call, using our request object, returning a response
+        Response response = client.newCall(request).execute();
+
+        //Extract the response body as a string
+        String responseString = response.body().string();
+
+        //use Gson to turn your json string into a list of Equity objects
+        List<Price> prices = gson.fromJson(responseString, pricesListTypeToken.getType());
+
+
+
+        return prices;
+    }
+    public List<Price> getQPrices(String param) throws IOException {
+        String url = "/prices";
+        if(param.equals("Q1")){
+          url = baseUrl + "/prices/Q1";
+        }
+        else if(param.equals("Q2")) {
+            url = baseUrl + "/prices/Q2";
+        }
         //Create a okHttp "request"
         Request request = new Request.Builder().url(url).build();
 
