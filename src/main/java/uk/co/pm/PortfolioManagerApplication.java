@@ -2,6 +2,7 @@ package uk.co.pm;
 
 import uk.co.pm.controller.Controller;
 import uk.co.pm.controller.PriceController;
+import uk.co.pm.gui.MyGUI;
 import uk.co.pm.utils.CSVUtilFile;
 
 import static spark.Spark.port;
@@ -14,6 +15,7 @@ public class PortfolioManagerApplication {
         new PriceController(remoteApiBaseUrl);
         new Controller((remoteApiBaseUrl));
         new CSVUtilFile(remoteApiBaseUrl);
+        new MyGUI();
     }
 
     //This will be used when we push to a cloud server
