@@ -1,6 +1,7 @@
 ## See: http://velocity.apache.org/engine/2.0/vtl-reference.html
 
 <html>
+<p><font color="red"> Note that the button "Export to CSV!" doesn't work for the web browser provided in the project you'll have to switch to official browsers in order to have access to that button!</font></p>
 <button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
 <body style="color: black">
 <ul>
