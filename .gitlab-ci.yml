@@ -3,7 +3,8 @@ image: maven:3.5.2-jdk-8
 cache:
   paths:
     - .m2/repository
-
+services:
+   - selenium/standalone-chrome:latest
 
 stages:
   - build
