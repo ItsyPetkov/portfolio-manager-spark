@@ -2,6 +2,9 @@
 
 <html>
 <button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
+<a href="http://localhost:4567/equities">
+	<button>Back to equities!</button>
+</a>
 <body style="color: black">
 <ul>
 
