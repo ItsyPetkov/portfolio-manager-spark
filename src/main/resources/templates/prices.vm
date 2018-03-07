@@ -9,7 +9,7 @@
 <body style="color: black">
 <ul>
 
-
+    <table id="table1" style="width:40%" border="1">
     #foreach($price in $prices)
 
         #if($foreach.index < $equities.size())
@@ -18,7 +18,7 @@
             #stop
         #end
 
-        <table style="width:40%" border="1">
+
             <th>$value2.getCompanyName()</th>
 
             <tr style="color:#ff3642">
@@ -29,11 +29,11 @@
             </tr>
 
 
-        </table>
+
 
 
     #end
-
+    </table>
     <script>
         function downloadCSV(csv, filename) {
             var csvFile;
