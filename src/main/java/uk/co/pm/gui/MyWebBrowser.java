@@ -2,6 +2,7 @@ package uk.co.pm.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -63,23 +64,26 @@ public class MyWebBrowser extends JFrame {
 			public void hyperlinkUpdate(HyperlinkEvent arg0) {
 				if(arg0.getEventType() == HyperlinkEvent.EventType.ACTIVATED){
 					loadHTMLData(arg0.getURL().toString());
+
 				}
 			}
-			
 		});
-		
+
 		add(new JScrollPane(displayWindow), BorderLayout.CENTER);
 		setSize(800, 600);
 		setVisible(true);
 	}
-	
+
 	private void loadHTMLData(String URL){
 		try{
 			displayWindow.setPage(URL);
+
 			URLbar.setText(URL);
 		}
 		catch(Exception e){
-			System.out.println("Woah shit something went wrong there!");
+			e.printStackTrace();
+
+			System.out.println("Something went wrong there!");
 		}
 	}
 }
