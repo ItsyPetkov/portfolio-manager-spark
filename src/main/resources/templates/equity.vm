@@ -8,7 +8,7 @@
 	<button>Show Prices!</button>
 </a>
 <a href="http://localhost:4567/equities/prices/Financials">
-	<button>Show quarter prices!</button>
+	<button>Show quarter prices for Financials Sector!</button>
 </a>
 <body style="color: black">
 <ul>
