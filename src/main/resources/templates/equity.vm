@@ -4,6 +4,9 @@
 
 <p><font color="red"> Note that the button "Export to CSV!" doesn't work for the web browser provided in the project you'll have to switch to official browsers in order to have access to that button!</font></p>
 <button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
+<a href="http://localhost:4567/equities/prices">
+	<button>Show Prices!</button>
+</a>
 <body style="color: black">
 <ul>
     #foreach($equity in $equities)
