@@ -3,12 +3,13 @@
 <html>
 
 <p><font color="red"> Note that the button "Export to CSV!" doesn't work for the web browser provided in the project you'll have to switch to official browsers in order to have access to that button!</font></p>
-<button onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
+<button id="CSV" onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
 <a href="http://localhost:4567/equities/prices">
-	<button>Show Prices!</button>
+	<button id="PriceButt">Show Prices!</button>
 </a>
-<body style="color: black">
-<ul>
+<title> Equities</title>
+<body style="color: black" id="Body">
+<table  id="table1"style="width:100%" border="1">
     #foreach($equity in $equities)
     
     #set($value = $equity.getSector() )
@@ -16,25 +17,24 @@
 	
 	
 	
-    <table style="width:100%" border="1">
+
         <th>$value2</th>
     
     	<tr style="color:#ff3642">
-            <th align="left" color="red"> EPIC is: $equity.EPIC</th>
+            <td align="left" color="red"> EPIC is: $equity.EPIC</td>
         </tr>
     	<tr style="color:#3cb3ff">
-            <th align="left"> Asset Type is: $equity.getAssetType()</th>
+            <td align="left"> Asset Type is: $equity.getAssetType()</td>
         </tr>
     	<tr style="color:#1dffa0">
-            <th align="left"> Sector is: $value </th>
+            <td align="left"> Sector is: $value </td>
         </tr>
     	<tr >
-            <th align="left"> Currency is: $equity.Currency </th>
+            <td align="left"> Currency is: $equity.Currency </td>
         </tr>
-
-    	</table>
     	
     #end
+</table>
     <script>
         function downloadCSV(csv, filename) {
             var csvFile;
@@ -74,8 +74,6 @@
 
     </script>
 
-
-</ul>
 
 </body>
 </html>

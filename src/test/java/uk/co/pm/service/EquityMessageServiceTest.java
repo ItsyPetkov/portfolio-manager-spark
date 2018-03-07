@@ -1,6 +1,6 @@
 package uk.co.pm.service;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import uk.co.pm.model.Equity;
 import uk.co.pm.model.EquityModel;
 
