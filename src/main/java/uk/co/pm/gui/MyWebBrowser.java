@@ -83,7 +83,7 @@ public class MyWebBrowser extends JFrame {
 		catch(Exception e){
 			e.printStackTrace();
 
-			System.out.println("Something went wrong there!");
+			System.out.println("Something went wrong there! PLease make sure you have entered the http:// followed by the address of the website.");
 		}
 	}
 }
