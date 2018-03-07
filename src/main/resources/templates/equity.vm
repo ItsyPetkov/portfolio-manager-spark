@@ -7,6 +7,9 @@
 <a href="http://localhost:4567/equities/prices">
 	<button>Show Prices!</button>
 </a>
+<a href="http://localhost:4567/equities/prices/Financials">
+	<button>Show quarter prices!</button>
+</a>
 <body style="color: black">
 <ul>
     #foreach($equity in $equities)
