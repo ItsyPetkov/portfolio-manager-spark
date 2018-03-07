@@ -32,7 +32,7 @@ public class TestTest {
             new PriceController(remoteApiBaseUrl);
             new Controller((remoteApiBaseUrl));
 
-            WebDriver driver = new ChromeDriver();
+            WebDriver driver = new SafariDriver();
             driver.get("http://localhost:4567/equities");
 
 
