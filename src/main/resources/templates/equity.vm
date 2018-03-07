@@ -7,9 +7,53 @@
 <a href="http://localhost:4567/equities/prices">
 	<button id="PriceButt">Show Prices!</button>
 </a>
+
 <title> Equities</title>
 <body style="color: black" id="Body">
 <table  id="table1"style="width:100%" border="1">
+
+
+<a href="http://localhost:4567/equities/prices/Financials">
+	<button>Show quarter prices for Financials Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Materials">
+	<button>Show quarter prices for Materials Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Information Technology">
+	<button>Show quarter prices for Information Technology Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Industrials">
+	<button>Show quarter prices for Industrials Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Consumer Staples">
+	<button>Show quarter prices for Consumer Staples Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Health Care">
+	<button>Show quarter prices for Health Care Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Energy">
+	<button>Show quarter prices for Energy Sector!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Consumer Discretionary">
+	<button>Show quarter prices for Consumer Discretionary!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Telecommunications">
+	<button>Show quarter prices for Telecommunications!</button>
+</a>
+
+<a href="http://localhost:4567/equities/prices/Utilities">
+	<button>Show quarter prices for Utilities!</button>
+</a>
+<body style="color: black">
+<ul>
     #foreach($equity in $equities)
     
     #set($value = $equity.getSector() )
