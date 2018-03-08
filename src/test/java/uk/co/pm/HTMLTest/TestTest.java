@@ -34,7 +34,7 @@ public class TestTest {
             new Controller((remoteApiBaseUrl));
             System.setProperty("webdriver.chrome.driver", "src/driver");
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("/usr/bin/google-chrome");
+            options.setBinary("/usr/bin/google-chrome");
             WebDriver driver = new ChromeDriver(options);
             driver.get("http://localhost:4567/equities");
 
