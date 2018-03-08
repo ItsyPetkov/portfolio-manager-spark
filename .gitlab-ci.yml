@@ -3,6 +3,10 @@ image: maven:3.5.2-jdk-8
 cache:
   paths:
     - .m2/repository
+
+
+before_script:
+  - find . -name 'chrome'
 services:
    - selenium/standalone-chrome:latest
 
