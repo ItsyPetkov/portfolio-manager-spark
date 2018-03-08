@@ -14,8 +14,6 @@ import uk.co.pm.externalapi.EquityExternalApiService;
 import uk.co.pm.externalapi.PriceExternalApiService;
 import uk.co.pm.model.Equity;
 import uk.co.pm.model.Price;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -35,7 +33,7 @@ public class TestTest {
             System.setProperty("webdriver.chrome.driver", "src/driver");
             ChromeOptions options = new ChromeOptions();
             options.setBinary("/usr/lib/google-chrome");
-            WebDriver driver = new ChromeDriver(options);
+            WebDriver driver = new SafariDriver(options);
             driver.get("http://localhost:4567/equities");
 
 
