@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import uk.co.pm.controller.Controller;
 import uk.co.pm.controller.PriceController;
@@ -33,9 +32,11 @@ public class TestTest {
             EquityExternalApiService e = new EquityExternalApiService(remoteApiBaseUrl);
             new PriceController(remoteApiBaseUrl);
             new Controller((remoteApiBaseUrl));
+            System.setProperty("webdriver.chrome.driver", "src/linuxdriver");
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary("/usr/bin/google-chrome");
 
-
-            WebDriver driver = new FirefoxDriver();
+            WebDriver driver = new SafariDriver();
             driver.get("http://localhost:4567/equities");
             driver.manage().window().maximize();
 
