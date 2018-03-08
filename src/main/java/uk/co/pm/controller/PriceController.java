@@ -51,7 +51,7 @@ public class PriceController {
                 model.put("prices", prices);
                 model.put("equities", equities);
 
-                return render(model, "templates/prices.vm");
+                return render(model, "templates/prices2.vm");
             } else {
                 //Change the Person objects we got from the external API into the format we want to return to our users
                 List<PriceReference> priceReferences = new ArrayList<>();
@@ -103,12 +103,6 @@ public class PriceController {
 
         {
             String quarter = request.params(":Q");
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
-
             //call the external api
             List<Price> prices = priceExternalApiService.getQPrices(quarter);
             List<Equity> equities = equityExternalApiService.getEquities();
@@ -145,11 +139,6 @@ public class PriceController {
 
         {
             String quarter = request.params(":Q");
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
-            System.out.println(quarter);
             //call the external api
             List<Price> prices = priceExternalApiService.getQPrices(quarter);
 

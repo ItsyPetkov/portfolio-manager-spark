@@ -7,7 +7,6 @@
 	<button>Back to equities!</button>
 </a>
 <body style="color: black">
-<ul>
 
     <table id="table1" style="width:40%" border="1">
     #foreach($price in $prices)
@@ -35,6 +34,7 @@
 
     #end
     </table>
+
     <script>
         function downloadCSV(csv, filename) {
             var csvFile;
@@ -50,8 +50,10 @@
 
             document.body.appendChild(downloadLink);
 
+
             downloadLink.click();
         }
+
 
         function exportTableToCSV(filename) {
             var csv = [];
@@ -69,10 +71,8 @@
         }
 
 
+
     </script>
-
-
-</ul>
 
 </body>
 </html>
