@@ -6,12 +6,11 @@
 	<button>Back to equities!</button>
 </a>
 <body style="color: black">
-<ul>
 
-
+    <table id="table1" style="width:100%" border="3">
 
     #foreach($price in $prices)
-        <table style="width:100%" border="3">
+
 
             <tr>
                 <th align="left"> EPIC is: $price.getEPIC()</th>
@@ -23,9 +22,9 @@
 
 
 
-        </table>
-    #end
 
+    #end
+    </table>
     <script>
         function downloadCSV(csv, filename) {
             var csvFile;
@@ -63,7 +62,7 @@
 
     </script>
 
-</ul>
+
 
 </body>
 </html>

@@ -53,9 +53,7 @@ public class PriceExternalApiService {
         else if(param.toUpperCase().equals("Q2")) {
             url = baseUrl + "/prices/Q2";
         }
-        else{
-            throw new IllegalArgumentException();
-        }
+
         //Create a okHttp "request"
         Request request = new Request.Builder().url(url).build();
 

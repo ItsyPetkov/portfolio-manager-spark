@@ -15,14 +15,16 @@ import uk.co.pm.externalapi.PriceExternalApiService;
 import uk.co.pm.model.Equity;
 import uk.co.pm.model.Price;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static spark.Spark.port;
 
 public class TestTest {
         @Test
-        public  void runTest() throws IOException {
+        public  void runTest() throws IOException, InterruptedException {
             port(getAssignedPort());
 
 
@@ -57,8 +59,11 @@ public class TestTest {
             //Find the body
             WebElement element = driver.findElement(By.id("Body"));
             WebElement csvElement = driver.findElement(By.id("CSV"));
-            WebElement pButton = driver.findElement(By.id("pButton"));
+            driver.findElement(By.id("pButton")).click();
+            TimeUnit.SECONDS.sleep(2);
+            assertThat(driver.getCurrentUrl()).isEqualTo("http://localhost:4567/equities/prices");
 
+            driver.navigate().back();
             driver.navigate().to("http://localhost:4567/equities/prices");
             assertThat(driver.getCurrentUrl()).isEqualTo("http://localhost:4567/equities/prices");
             assertThat(runPrice(driver)).isTrue();
