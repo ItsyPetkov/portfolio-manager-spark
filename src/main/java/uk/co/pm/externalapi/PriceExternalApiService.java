@@ -42,17 +42,15 @@ public class PriceExternalApiService {
 
         //use Gson to turn your json string into a list of Equity objects
         List<Price> prices = gson.fromJson(responseString, pricesListTypeToken.getType());
-
-
-
-        return prices;
+    return prices;
     }
+
     public List<Price> getQPrices(String param) throws IOException {
         String url = "/prices";
-        if(param.equals("Q1")){
+        if(param.toUpperCase().equals("Q1")){
           url = baseUrl + "/prices/Q1";
         }
-        else if(param.equals("Q2")) {
+        else if(param.toUpperCase().equals("Q2")) {
             url = baseUrl + "/prices/Q2";
         }
         //Create a okHttp "request"

@@ -33,9 +33,9 @@ public class TestTest {
             System.setProperty("webdriver.chrome.driver", "src/driver");
             ChromeOptions options = new ChromeOptions();
             options.setBinary("/usr/lib/google-chrome");
-            WebDriver driver = new SafariDriver(options);
+            WebDriver driver = new SafariDriver();
             driver.get("http://localhost:4567/equities");
-
+            driver.manage().window().maximize();
 
             WebElement table = driver.findElement(By.id("table1"));
             List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -57,22 +57,24 @@ public class TestTest {
             //Find the body
             WebElement element = driver.findElement(By.id("Body"));
             WebElement csvElement = driver.findElement(By.id("CSV"));
+            WebElement pButton = driver.findElement(By.id("pButton"));
 
             driver.navigate().to("http://localhost:4567/equities/prices");
-
+            assertThat(driver.getCurrentUrl()).isEqualTo("http://localhost:4567/equities/prices");
             assertThat(runPrice(driver)).isTrue();
+            assertThat(runQuarter(driver,"Q1")).isTrue();
+
+
+
             driver.close();
             driver.quit();
         }
 
-
-        public boolean runPrice(WebDriver d) throws IOException {
-
-
+        public boolean runQuarter(WebDriver d, String quarter) throws IOException {
             PriceExternalApiService p = new PriceExternalApiService("https://portfolio-manager-api.herokuapp.com");
             WebElement table = d.findElement(By.id("table1"));
             List<WebElement> allRows = table.findElements(By.tagName("tr"));
-            List<Price> equities = p.getPrices();
+            List<Price> prices = p.getQPrices(quarter);
             List<String> EPICS = new ArrayList<String>();
 
             for(WebElement row: allRows){
@@ -83,13 +85,39 @@ public class TestTest {
                 }
             }
             int i = 0;
-            while(i<EPICS.size()){
-                assertThat(equities.get(i).getEPIC()).isEqualTo(EPICS.get(i));
-                System.out.println(equities.get(i).getEPIC() +":"+EPICS.get(i));
+            while(i<prices.size()){
+                assertThat(prices.get(i).getEPIC()).isEqualTo(EPICS.get(i));
+
                 i++;
             }
 
             return true;
+
+        }
+    public boolean runPrice(WebDriver d) throws IOException {
+
+
+        PriceExternalApiService p = new PriceExternalApiService("https://portfolio-manager-api.herokuapp.com");
+        WebElement table = d.findElement(By.id("table1"));
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        List<Price> prices = p.getPrices();
+        List<String> EPICS = new ArrayList<String>();
+
+        for(WebElement row: allRows){
+            String r = row.getText().trim();
+            if(r.contains("EPIC is:")){
+                String EPIC  = r.substring(9);
+                EPICS.add(EPIC);
+            }
+        }
+        int i = 0;
+        while(i<EPICS.size()){
+            assertThat(prices.get(i).getEPIC()).isEqualTo(EPICS.get(i));
+            i++;
+        }
+
+        return true;
+
 
         }
     //This will be used when we push to a cloud server

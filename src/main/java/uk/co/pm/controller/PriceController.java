@@ -65,7 +65,7 @@ public class PriceController {
         });
 
         //This is how you set up a REST GET method, using Spark (http://sparkjava.com)
-        get("/equities/prices/:sector", (Request request, Response response) ->
+        get("/equities/prices/:sector/", (Request request, Response response) ->
 
         {
             //call the external api
@@ -98,10 +98,17 @@ public class PriceController {
                 return gson.toJson(priceReferences);
             }
         });
+
         get("/equities/prices/:sector/:Q", (Request request, Response response) ->
 
         {
-            String quarter = request.params(":Q").trim();
+            String quarter = request.params(":Q");
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
+
             //call the external api
             List<Price> prices = priceExternalApiService.getQPrices(quarter);
             List<Equity> equities = equityExternalApiService.getEquities();
@@ -118,6 +125,7 @@ public class PriceController {
                         temp.add(e);
                     }
                 }
+
                 model.put("prices", prices);
                 model.put("equities", temp);
                 return render(model, "templates/prices2.vm");
@@ -137,7 +145,11 @@ public class PriceController {
 
         {
             String quarter = request.params(":Q");
-
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
+            System.out.println(quarter);
             //call the external api
             List<Price> prices = priceExternalApiService.getQPrices(quarter);
 

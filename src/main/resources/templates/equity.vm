@@ -4,8 +4,8 @@
 
 <p><font color="red"> Note that the button "Export to CSV!" doesn't work for the web browser provided in the project you'll have to switch to official browsers in order to have access to that button!</font></p>
 <button id="CSV" onclick="exportTableToCSV('Equities.csv')">Export to CSV!</button>
-<a href="http://localhost:4567/equities/prices">
-	<button id="PriceButt">Show Prices!</button>
+<a id="pButton" href="http://localhost:4567/equities/prices">
+	<button >Show Prices!</button>
 </a>
 
 <title> Equities</title>

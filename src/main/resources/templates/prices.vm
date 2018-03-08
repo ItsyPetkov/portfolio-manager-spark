@@ -22,10 +22,11 @@
             <th>$value2.getCompanyName()</th>
 
             <tr style="color:#ff3642">
-                <th align="left" color="red"> EPIC is: $price.EPIC</th>
+                <th align="left" color="red"> EPIC is: $price.getEPIC()</th>
             </tr>
+
             <tr style="color:#3cb3ff">
-                <th align="left"> Asset Type is: $price.getMid()</th>
+                <th align="left"> Price is: $price.getMid()</th>
             </tr>
 
 
@@ -49,7 +50,6 @@
 
             document.body.appendChild(downloadLink);
 
-            document.write("shbaeghks");
             downloadLink.click();
         }
 
