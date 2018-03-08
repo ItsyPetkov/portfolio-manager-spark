@@ -36,7 +36,7 @@ public class TestTest {
             ChromeOptions options = new ChromeOptions();
             options.setBinary("/usr/bin/google-chrome");
 
-            WebDriver driver = new SafariDriver();
+            WebDriver driver = new ChromeDriver();
             driver.get("http://localhost:4567/equities");
             driver.manage().window().maximize();
 
