@@ -30,12 +30,11 @@ public class TestTest {
 
             String remoteApiBaseUrl = "https://portfolio-manager-api.herokuapp.com";
             EquityExternalApiService e = new EquityExternalApiService(remoteApiBaseUrl);
-            new PriceController(remoteApiBaseUrl);
+            new PriceController(remoteApiBaseUrl); 
             new Controller((remoteApiBaseUrl));
-            System.setProperty("webdriver.chrome.driver", "src/driver");
+            System.setProperty("webdriver.chrome.driver", "src/linuxdriver");
             ChromeOptions options = new ChromeOptions();
-            options.setBinary("/usr/lib/google-chrome");
-            WebDriver driver = new SafariDriver();
+            WebDriver driver = new ChromeDriver(options);
             driver.get("http://localhost:4567/equities");
             driver.manage().window().maximize();
 
