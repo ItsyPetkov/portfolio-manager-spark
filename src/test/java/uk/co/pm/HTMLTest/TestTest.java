@@ -32,11 +32,11 @@ public class TestTest {
             EquityExternalApiService e = new EquityExternalApiService(remoteApiBaseUrl);
             new PriceController(remoteApiBaseUrl);
             new Controller((remoteApiBaseUrl));
-            System.setProperty("webdriver.chrome.driver", "src/linux");
+            System.setProperty("webdriver.chrome.driver", "src/macdriver");
             ChromeOptions options = new ChromeOptions();
             options.setBinary("/usr/bin/google-chrome");
 
-            WebDriver driver = new ChromeDriver();
+            WebDriver driver = new SafariDriver();
             driver.get("http://localhost:4567/equities");
             driver.manage().window().maximize();
             WebElement table = driver.findElement(By.id("table1"));
@@ -70,8 +70,6 @@ public class TestTest {
             assertThat(driver.getCurrentUrl()).isEqualTo("http://localhost:4567/equities/prices");
             driver.navigate().to("http://localhost:4567/equities/III");
             assertThat(driver.getCurrentUrl()).isEqualTo("http://localhost:4567/equities/III");
-            assertThat(runPrice(driver)).isTrue();
-            assertThat(runQuarter(driver,"Q1")).isTrue();
 
             driver.close();
             driver.quit();
