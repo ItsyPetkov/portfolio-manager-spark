@@ -7,6 +7,7 @@ cache:
 
 before_script:
   - find . -name 'chrome'
+  - chrome
 services:
    - selenium/standalone-chrome:latest
 
