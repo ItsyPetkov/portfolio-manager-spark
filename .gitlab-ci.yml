@@ -7,7 +7,7 @@ cache:
 
 before_script:
   - find . -name 'chrome'
-  - sudo apt install chromium-browser
+  - apt install chromium-browser
 services:
    - selenium/standalone-chrome:latest
 
