@@ -32,14 +32,13 @@ public class TestTest {
             EquityExternalApiService e = new EquityExternalApiService(remoteApiBaseUrl);
             new PriceController(remoteApiBaseUrl);
             new Controller((remoteApiBaseUrl));
-            System.setProperty("webdriver.chrome.driver", "src/macdriver");
+            System.setProperty("webdriver.chrome.driver", "src/linux");
             ChromeOptions options = new ChromeOptions();
             options.setBinary("/usr/bin/google-chrome");
 
-            WebDriver driver = new SafariDriver();
+            WebDriver driver = new ChromeDriver();
             driver.get("http://localhost:4567/equities");
             driver.manage().window().maximize();
-
             WebElement table = driver.findElement(By.id("table1"));
             List<WebElement> allRows = table.findElements(By.tagName("tr"));
             List<Equity> equities = e.getEquities();
